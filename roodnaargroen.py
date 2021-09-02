@@ -3,7 +3,7 @@ import time
 import logging
 logging.basicConfig(level=logging.DEBUG)
 broker_address="mqtt.wouterpeetermans.com"
-client = mqtt.Client("verkeerlicht-client") #create new instance
+client = mqtt.Client("verkeerlicht-client", transport="tcp") #create new instance
 logger = logging.getLogger(__name__)
 client.enable_logger(logger)
 client.connect(broker_address, port=1884) #connect to broker
