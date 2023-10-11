@@ -1,0 +1,10 @@
+version: "3"
+services:
+  web:
+    build: .
+    labels:
+      - "traefik.http.routers.verkeerslicht.middlewares=verkeerslicht-auth"
+      - "traefik.http.middlewares.verkeerslicht-auth.basicauth.users=<your pass user combo here>"
+      - "traefik.http.routers.verkeerslicht.tls=true"
+      - "traefik.http.routers.verkeerslicht.tls.certresolver=letsencrypt"
+      - "traefik.http.services.verkeerslicht.loadbalancer.server.port=80"
